@@ -9,17 +9,17 @@ import ViewUserModal from './ViewUsersModal'
 
 const UserTable = (props) => {
 	const [ tblData, setTblData ] = useState([]);
-	const [ searchText, setSearchText ] = useState(null);
+	const [ searchText, setSearchText ] = useState("");
 	const [modal,setModal] = useState(false);
 	const [userDetails,setUserDetails] = useState({})
 
 	const toggleModal = ( ) => setModal(!modal)
 
 	useEffect(() => {
-		getUserList().then((res) => {
+		getUserList(`?search=${searchText}`).then((res) => {
 			setTblData(res);
 		});
-	}, []);
+	}, [searchText]);
 
 	const formAction = (action,data) =>  {
 		if(action === "add"){

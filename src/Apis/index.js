@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const getUserList = () => {
-  return axios.get("https://5efd90b7dd373900160b3297.mockapi.io/users")
+export const getUserList = (query) => {
+  return axios.get(`https://5efd90b7dd373900160b3297.mockapi.io/users${query}`)
     .then(res => res.data)
     .catch(err => console.log(err))
 }

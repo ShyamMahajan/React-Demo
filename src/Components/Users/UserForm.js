@@ -32,7 +32,7 @@ const UserForm = (props) => {
   <div className="table">
   <div className="boxheader">
     <div className="b-text">
-      Add User
+      # {props.action} User
     </div>
     <div className="Backward" onClick={() => props.history.push("/users")}>
       <FaBackward color = "#4d06ab"/><span className="b-text">Backward</span> 
