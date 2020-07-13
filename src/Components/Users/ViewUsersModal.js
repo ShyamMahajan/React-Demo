@@ -1,6 +1,7 @@
 import React from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import styled from "styled-components";
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   .key {
@@ -17,7 +18,7 @@ const Wrapper = styled.div`
 const viewCompanyModal = props => {
   const { modal, toggle, userDetails } = props;
   return (
-    <Wrapper>
+    <Wrapper data-test = "component-ViewUserModal">
       <Modal centered isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>
           <div>
@@ -54,5 +55,11 @@ const viewCompanyModal = props => {
     </Wrapper>
   );
 };
+
+viewCompanyModal.propTypes = {
+  userDetails : PropTypes.object.isRequired,
+  modal : PropTypes.bool.isRequired,
+  toggle : PropTypes.func.isRequired
+}
 
 export default viewCompanyModal;
