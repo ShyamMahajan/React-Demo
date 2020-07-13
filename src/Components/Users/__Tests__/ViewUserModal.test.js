@@ -25,7 +25,7 @@ test('renders without error ', () => {
 	expect(modalComponent.length).toBe(1);
 });
 
-test('Does not throw warning with expected props', () => {
+test('Does not throw error with expected props', () => {
 	const expectedProps = {
 		userDetails: {
 			avatar: 'abcsd.com',
@@ -35,7 +35,7 @@ test('Does not throw warning with expected props', () => {
 		modal: true,
 		toggle: () => 1
 	};
-	checkProps(ViewUsersModal,expectedProps)
+	checkProps(ViewUsersModal,expectedProps);
 });
 
 test('renders userDetails with expected props', () => {
