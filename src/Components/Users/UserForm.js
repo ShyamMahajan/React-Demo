@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+
 import enhancer from './FormEnhancer';
 import ProfileImg from '../profileImage/ProfileImage';
 import Error from '../Error/error';
 import {Button} from 'reactstrap';
 import { FaBackward } from 'react-icons/fa'
 
+
+
 const UserForm = (props) => {
+
   const getImgObj = imgObject => {
     // console.log("IMAGEOBJECT", imgObject);
     // console.log(window.URL.createObjectURL(imgObject));
@@ -29,9 +34,9 @@ const UserForm = (props) => {
   }
 
   return (
-  <div className="table">
+  <div className="table" data-test="component-userForm">
   <div className="boxheader">
-    <div className="b-text">
+    <div className="b-text" data-test = "action">
       # {props.action} User
     </div>
     <div className="Backward" onClick={() => props.history.push("/users")}>
@@ -43,6 +48,7 @@ const UserForm = (props) => {
         <div className="form-group">
           <label className="fs-16 medium-text">Name</label>
           <input
+            data-test="input-name"
             type="text"
             className="form-control"
             id="name"
@@ -56,6 +62,7 @@ const UserForm = (props) => {
         <div className="form-group">
           <label className="fs-16 medium-text">Email</label>
           <input
+            data-test = "input-email"
             type="text"
             className="form-control"
             id="email"
@@ -76,6 +83,7 @@ const UserForm = (props) => {
         </div>
         <div>
           <Button
+            data-test = "submit-button"
             color = "info"
             className="c-btn c-info form-button fs-16"
             style={{ maxWidth: "125px" }}
@@ -88,6 +96,12 @@ const UserForm = (props) => {
   </div>
   
   )
+}
+
+UserForm.propTypes = {
+  editedData : PropTypes.object,
+  action : PropTypes.string.isRequired,
+  submitHandler : PropTypes.func.isRequired
 }
 
 export default enhancer(UserForm);
