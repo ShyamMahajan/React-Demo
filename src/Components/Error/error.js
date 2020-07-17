@@ -30,7 +30,10 @@ const Error = (props) => {
 
 Error.propTypes = {
   field : PropTypes.string.isRequired,
-  errors : PropTypes.object.isRequired,
+  errors: PropTypes.shape({
+    name : PropTypes.string,
+    email : PropTypes.string
+  }),
   touched : PropTypes.object.isRequired,
   submitCount : PropTypes.number.isRequired
 }
