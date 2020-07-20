@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { userPlaceHolder } from "../../helper/constants";
+import PropTypes from 'prop-types';
+
 const ProfileImage = props => {
   const [src, setSource] = useState(props.url || userPlaceHolder);
 
@@ -12,7 +14,7 @@ const ProfileImage = props => {
   };
   return (
     <React.Fragment>
-      <div className={`form-group ${props.center ? "text-center" : ""}`}>
+      <div data-test="component-profileImage" className={`form-group ${props.center ? "text-center" : ""}`}>
         <label>
           <img
             src={src}
@@ -35,4 +37,10 @@ const ProfileImage = props => {
     </React.Fragment>
   );
 };
+
+ProfileImage.propTypes = {
+  url : PropTypes.string,
+  center: PropTypes.bool
+}
+
 export default ProfileImage;

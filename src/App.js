@@ -11,7 +11,7 @@ import './App.css';
 function App() {
   const history = createBrowserHistory();
   return (
-    <Container fluid>
+    <Container fluid data-test="component-app">
       <Row>
         <Col md={{ size: 10, offset: 1 }}>
           <Provider store={Store}>
@@ -38,7 +38,6 @@ function App() {
           </Provider>
         </Col>
       </Row>
-
     </Container>
   );
 }

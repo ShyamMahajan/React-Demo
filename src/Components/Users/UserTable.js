@@ -8,7 +8,7 @@ import swal from 'sweetalert'
 import ViewUserModal from './ViewUsersModal'
 
 const UserTable = (props) => {
-	const [ tblData, setTblData ] = useState([]);
+	const [ tblData, setTblData ] = React.useState([]);
 	const [ searchText, setSearchText ] = useState("");
 	const [modal,setModal] = useState(false);
 	const [userDetails,setUserDetails] = useState({})
@@ -106,6 +106,7 @@ const UserTable = (props) => {
 				return (
 					<div className="">
 						<Button
+							data-test = "view-button"
 							className="c-btn mr-10"
 							color="success"
 							onClick={() => showUserDetails(props.original.id)}>
@@ -114,6 +115,7 @@ const UserTable = (props) => {
 							</div>
 						</Button>
 						<Button
+							data-test = "edit-button"
 							className="c-btn mr-10"
 							color="primary"
 							onClick={() => formAction("edit",props.original)}>
@@ -122,6 +124,7 @@ const UserTable = (props) => {
 							</div>
 						</Button>
 						<Button
+							data-test = "delete-button"
 							color="danger"
 							className="c-btn c-danger"
 							onClick={() => userDeleteHandler(props.original.id)}>
@@ -155,17 +158,18 @@ const UserTable = (props) => {
 	return (
 		<Fragment>
 		<ViewUserModal
+		data-test = "component-user-modal"
         userDetails={userDetails}
         toggle={toggleModal}
         modal={modal}
       />
-		<div className="plr-15 table">
-		
+		<div className="plr-15 table" data-test="user-table">
 			<div className="heading">
 				<div className="b-text"># Users</div>
 				<div className="searchbar">
 					<div className="search">
 						<input
+							data-test="search-input"
 							value={searchText || ''}
 							onChange={(e) => setSearchText(e.target.value)}
 							type="text"
@@ -174,6 +178,7 @@ const UserTable = (props) => {
 						/>
 					</div>
 						<Button
+							data-test = "add-button"
 							className="c-btn mr-10"
 							color="warning"
 							onClick={() => formAction("add")}>
